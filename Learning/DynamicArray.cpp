@@ -20,5 +20,7 @@ int main(){
         cout << "GPA of " << i+1 << ": " << pGrades[i] << endl;
     }
     
+    delete pGrades;
+    
     return 0;
 }
