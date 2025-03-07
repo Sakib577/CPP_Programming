@@ -8,7 +8,16 @@ int main()
     //          GREAT if you have a set of potential options
 
     // string today = "Friday"; // we can't use string in swicth
-    enum day {saturday=0, sunday=1, monday=2, tuesday=3, wednesday=4, thursday=5, friday=6};
+    enum day
+    {
+        saturday = 0,
+        sunday = 1,
+        monday = 2,
+        tuesday = 3,
+        wednesday = 4,
+        thursday = 5,
+        friday = 6
+    };
 
     day today = friday;
     switch (today)
