@@ -8,6 +8,7 @@ using namespace std;
 
 struct Student
 {
+    // without an access modifier in a struct, it defaults to public
     string name;
     double gpa;
     bool enrolled;

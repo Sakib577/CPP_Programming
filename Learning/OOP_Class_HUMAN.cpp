@@ -2,6 +2,7 @@
 using namespace std;
 
 class Human{
+    // without any access modifier in a class, it defaults to private
     public:
     string name;
     string occupation = "Programmar"; // it is default
