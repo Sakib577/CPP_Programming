@@ -6,7 +6,7 @@ using namespace std;
 // setter = function that makes a private attribute WRITEABLE
 class Stove{
     public:
-        int temperature = 0;
+        int temperature = 45;
     
     private:
         int ptemp = 0;
@@ -22,11 +22,15 @@ class Stove{
             this->ptemp = ptemp;
         }
     }
+
+    Stove(int ptemp){   // we can also set values with constructors
+        setptemp(ptemp);
+    }
 };
 
 int main(){
-    Stove stove;
-    stove.temperature = 1000000;
+    Stove stove(100);
+    // stove.temperature = 1000000; // after using constructor, we can't write this
     cout << "Temp: " << stove.temperature << endl;
 
     // stove.ptemp = 1000; // It'll give an error for trying to change a private variable
@@ -34,5 +38,8 @@ int main(){
 
     stove.setptemp(300);
     cout << "Temp: " << stove.getptemp() << endl;
+
+    Stove stove2(324);
+    cout << "Temp: " << stove2.getptemp() << endl;
     return 0;
 }
