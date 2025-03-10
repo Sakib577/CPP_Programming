@@ -1,1 +1,1 @@
-cout << "Value of x: " << *pNull << endl;
+public:
