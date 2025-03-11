@@ -27,6 +27,13 @@ int main (){
     cout << car2.brand << endl;
     cout << car2.model << endl;
     cout << car2.year << endl;
-    
+
+    // or
+
+    Car car3 = Car("BMW", "Speed" , 2020);
+    cout << car3.brand << endl;
+    cout << car3.model << endl;
+    cout << car3.year << endl;
+
     return 0;
 }
