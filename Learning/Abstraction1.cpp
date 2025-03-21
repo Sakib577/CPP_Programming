@@ -1,12 +1,13 @@
 #include <iostream>
 using namespace std;
 
+    // a class that cannot be instantiated directly, 
+    // serving as a blueprint for other classes (subclasses) to inherit from
+
 class AbstractEmployee{
     virtual void AskForPromotion()=0; 
     // by doing this we can make it obligatory (which means
     // any classes that uses AbstractEmployee, needs to implement this method)
-    // a class that cannot be instantiated directly, 
-    // serving as a blueprint for other classes (subclasses) to inherit from
 
 };
 
