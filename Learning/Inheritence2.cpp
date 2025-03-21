@@ -8,7 +8,7 @@ class AbstractEmployee{
 
 };
 
-class Employee: AbstractEmployee{
+class Employee: public AbstractEmployee{
     private:
         string name;
         int age;
@@ -37,10 +37,13 @@ class Employee: AbstractEmployee{
     }
 };
 
-class Developer: Employee{
+class Developer: public Employee{
     public:
         string FavProgrammingLang;
-        Developer(string name, int age, string FavProgrammingLang){} // we have to write the constructor because the parent class have it
+        Developer(string name, int age, string FavProgrammingLang)
+            :Employee(name, age){
+            this->FavProgrammingLang = FavProgrammingLang; 
+        } // we have to write the constructor because the parent class have it
 };
 
 // main
@@ -50,8 +53,10 @@ int main(){
 
     employee1.AskForPromotion();
 
-    Developer developer1("sadik", 22, "Python");
+    Developer developer1("sadik", 31, "Python");
     cout << developer1.getName() << "\n" << developer1.getAge() <<"\n"  << developer1.FavProgrammingLang <<  endl;
+
+    developer1.AskForPromotion();
 
     return 0;
 }
