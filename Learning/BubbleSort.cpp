@@ -1,4 +1,4 @@
-#include <iostrevam>
+#include <iostream>
 using namespace std;
 
 void bubblesort(int array[], int size)
