@@ -18,5 +18,9 @@ int main(){
 
     cout << endl;
 
+    cout << cars.front() << endl;
+    cout << cars.back() << endl;
+    
+
     return 0;
 }
