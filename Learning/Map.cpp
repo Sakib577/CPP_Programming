@@ -36,5 +36,19 @@ int main()
 
     cout << "Is map empty?: " << gpa.empty() << endl;
     // because map is not empty.
+
+    // Since map elements consist of both keys and values,
+    // you have to include .first to access the keys, and .second to access values in the loop
+    for(auto gpasingle: gpa){
+        cout << gpasingle.first << " gpa is: " << gpasingle.second << endl;
+    }
+
+    // to reverse the order, you can use the greater<type> functor inside the angle brackets
+    map<string, double, greater<string>> gpa2 = {{"Nibir", 3.86}, {"Sakib", 3.23}, {"Sohan", 3.20}};
+
+    for(auto gpasingle: gpa2){
+        cout << gpasingle.first << " gpa is: " << gpasingle.second << endl;
+    }
+
     return 0;
 }
