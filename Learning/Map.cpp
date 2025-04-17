@@ -44,7 +44,8 @@ int main()
     }
 
     // to reverse the order, you can use the greater<type> functor inside the angle brackets
-    map<string, double, greater<string>> gpa2 = {{"Nibir", 3.86}, {"Sakib", 3.23}, {"Sohan", 3.20}};
+    using reverse_map = map<string, double, greater<string>>;  // created a namespace to shorten a really long data type
+    reverse_map gpa2 = {{"Nibir", 3.86}, {"Sakib", 3.23}, {"Sohan", 3.20}};
 
     for(auto gpasingle: gpa2){
         cout << gpasingle.first << " gpa is: " << gpasingle.second << endl;
