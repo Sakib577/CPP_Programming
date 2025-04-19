@@ -6,6 +6,9 @@ int main(){
     cin >> word;
 
     char c = word[0];
-    cout << c << endl;
+    char C = toupper(c);
+    word.at(0) = C;
+
+    cout << word << endl;
     return 0;
 }
