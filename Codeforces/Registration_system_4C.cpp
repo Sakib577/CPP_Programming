@@ -6,7 +6,7 @@ int main()
 {
     int n;
     cin >> n;
-    unordered_map<string, int> names;
+    unordered_map<string, int> names; // unordered map is used for faster lookup than map( O(n) vs O(log n))
     while (n--)
     {
         string input;
