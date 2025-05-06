@@ -7,19 +7,35 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int n;
-    int x, y;
-    cin >> n;
+    double x, y;
+    cin >> x >> y;
 
-    while (n--)
+    if (x > 0 && y > 0)
     {
-        cin >> x >> y;
-        int diff;
-        int count = 0;
-        diff = abs(x - y);
-        count =(diff +9 )/ 10;
-        cout << count << endl;
+        cout << "Q1" << endl;
     }
+    else if (x < 0 && y > 0)
+    {
+        cout << "Q2" << endl;
+    }
+    else if (x < 0 && y < 0)
+    {
+        cout << "Q3" << endl;
+    }
+    else if (x > 0 && y < 0)
+    {
+        cout << "Q4" << endl;
+    }
+    else if ((y < 0 || y >0) && x == 0)
+    {
+        cout << "Eixo Y" << endl;
+    }
+    else if ((x < 0 || x >0) && y == 0)
+    {
+        cout << "Eixo X" << endl;
+    }
+    else
+        cout << "Origem" << endl;
 
     return 0;
 }
