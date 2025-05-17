@@ -1,0 +1,1 @@
+{"name":"Local: T-primes_230B","url":"/home/sakib/Documents/CPP_Programming/Codeforces/T-primes_230B.cpp","tests":[{"id":1747496842483,"input":"3\n4 5 6\n","output":"YES\nNO\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/sakib/Documents/CPP_Programming/Codeforces/T-primes_230B.cpp","group":"local","local":true}
