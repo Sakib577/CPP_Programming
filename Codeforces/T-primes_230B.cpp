@@ -1,30 +1,32 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
-int main(){
+bool isprime(int x){
+    if(x < 2) return false;
+    for(int i =2; i*i <= x;i++){
+        if(x%i == 0){
+            return false;
+        }
+    } return true;
+}
+
+int main()
+{
     int n;
     cin >> n;
-    int number;
-    
+    long long number;
     while (n--)
     {
-        int divisible=0;
         cin >> number;
-        for (int i = 1; i <= number; i++)
-        {
-            if (number%i == 0)
-            {
-                divisible++;
-            }
-            if (divisible > 3)
-            {
-                divisible=0;
-                break;
-            }
-        }
-        cout << ((divisible==3)?"YES":"NO") << endl;
+        long long x = sqrt(number);
         
+        if(x*x== number && isprime(x)){
+            cout << "YES" << endl;
+        } else {
+            cout <<"NO"<<endl;
+        }
     }
-    
+
     return 0;
 }
