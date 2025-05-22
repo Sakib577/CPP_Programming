@@ -1,37 +1,37 @@
 #include <iostream>
 #include <vector>
 using namespace std;
- 
+
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    
-    int n;
-    vector<int> abc(3);
-    cin >> n >> abc[0] >> abc[1] >> abc[2];
- 
-    if (abc[0] + abc[1] + abc[2] == n)
+
+    int n, a, b, c;
+    cin >> n >> a >> b >> c;
+
+    vector<int> arr(n + 1);
+    if(a<=n)arr[a] = 1;
+    if(b<=n)arr[b] = 1;
+    if(c<=n)arr[c] = 1;
+
+    for (int i = 0; i <= n; i++)
     {
-        cout << 3 << endl;
+        if (arr[i] != 0)
+        {
+            if (i + a <= n)
+            {
+                arr[i + a] = max(arr[i+a],arr[i]+1);
+            }
+            if (i + b <= n)
+            {
+                arr[i + b] = max(arr[i+b],arr[i]+1);
+            }
+            if (i + c <= n)
+            {
+                arr[i + c] = max(arr[i+c],arr[i]+1);
+            }
+        }
     }
-    else if (abc[0] + abc[1] == n || abc[2] + abc[1] == n || abc[2] + abc[0] == n)
-    {
-        cout << 2 << endl;
-    } else if (abc[0] == n ||abc[1] == n ||abc[2] == n )
-    {
-        cout << 1 << endl;
-    } else if (n%abc[0] == 0)
-    {
-        cout << n/abc[0] << endl;
-    } else if (n%abc[1] == 0)
-    {
-        cout << n/abc[1] << endl;
-    } else if (n%abc[2] == 0)
-    {
-        cout << n/abc[2] << endl;
-    }
-    
+    cout << arr[n] << endl;
+
     return 0;
 }
