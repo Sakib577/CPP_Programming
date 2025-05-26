@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Queue
+class Deque
 {
 private:
     int FRONT;
@@ -10,7 +10,7 @@ private:
     int n;
 
 public:
-    Queue(int n)
+    Deque(int n)
     {
         this->n = n;
         arr = new int[n];
@@ -42,7 +42,7 @@ public:
             return false;
     }
 
-    void push(int value)
+    void pushback(int value)
     {
         if (isFull())
         {
@@ -59,8 +59,47 @@ public:
         }
         arr[REAR] = value;
     }
+    void pushfront(int value)
+    {
+        if (isFull())
+        {
+            cout << "Queue is full." << endl;
+            return;
+        }
+        else if (isEmpty())
+        {
+            REAR = FRONT = 0;
+        }
+        else
+        {
+            FRONT = (FRONT -1+ n) % n;
+        }
+        arr[FRONT] = value;
+    }
 
-    int pop()
+    int popback()
+    {
+        int popValue;
+        if (isEmpty())
+        {
+            cout << "Queue is empty." << endl;
+            return -1;
+        }
+        else if (REAR == FRONT)
+        {
+            popValue = arr[REAR];
+            arr[REAR] = 0;
+            REAR = FRONT = -1;
+        }
+        else
+        {
+            popValue = arr[REAR];
+            arr[REAR] = 0;
+            REAR = (REAR -1+ n) % n;
+        }
+        return popValue;
+    }
+    int popfront()
     {
         int popValue;
         if (isEmpty())
@@ -143,36 +182,41 @@ int main()
     cout << "Input the size of queue:" << endl;
     cin >> n;
 
-    Queue q(n);
-    cout << "Push all:" << endl;
+    Deque dq(n);
+    cout << "Pushback all:" << endl;
     for (int i = 0; i < n; i++)
     {
         int in;
         cin >> in;
-        q.push(in);
+        dq.pushback(in);
     }
     cout << endl;
-    q.display();
+    dq.display();
     cout << endl;
 
-    cout << "pop:" << endl;
-    q.pop();
-    q.display();
-    cout << endl;
+    cout << "Popfront: " << endl;
+    dq.popfront();
+    dq.display();
+    cout << "PopBack: "<< endl;
+    dq.popback();
+    dq.display();
 
-    cout << "Push:" << endl;
-    q.push(10);
-    q.display();
+    cout << "Pushfront: "<< endl;
+    dq.pushfront(10);
+    dq.display();
+    cout << "Pushback: " << endl;
+    dq.pushback(20);
+    dq.display();
 
-    cout << "Is full :" << q.isFull() << endl;
-    cout << "Is empty :" << q.isEmpty() << endl;
-    cout << "Pop all:" << endl;
+    cout << "Is full :" << dq.isFull() << endl;
+    cout << "Is empty :" << dq.isEmpty() << endl;
+    cout << "Popback all:" << endl;
 
-    while (!q.isEmpty())
+    while (!dq.isEmpty())
     {
-        q.pop();
+       dq.popback();
     }
 
-    cout << "Now is empty: " << q.isEmpty() << endl;
+    cout << "Now is empty: " << dq.isEmpty() << endl;
     return 0;
 }
