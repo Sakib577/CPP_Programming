@@ -9,7 +9,7 @@ void swap(int &a, int &b)
     b = temp;
 }
 
-void bubblesortascend(int arr[], int &n)
+void bubblesortascend(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -24,7 +24,7 @@ void bubblesortascend(int arr[], int &n)
     }
 }
 
-void bubblesortdescend(int arr[], int &n)
+void bubblesortdescend(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -49,7 +49,7 @@ int main()
         cin >> arr[i];
     }
 
-    bubblesortascend(arr, n);
+    bubblesortascend(arr, sizeof(arr)/sizeof(arr[0]));
 
     for (int i = 0; i < n; i++)
     {
@@ -57,7 +57,7 @@ int main()
     }
 
     cout << endl;
-    bubblesortdescend(arr,n);
+    bubblesortdescend(arr, sizeof(arr)/sizeof(arr[0]));
 
     for (int i = 0; i < n; i++)
     {
