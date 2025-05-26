@@ -134,7 +134,7 @@ int main()
     cout << "Is empty :" << q.isEmpty() << endl;
     cout << "Pop all:" << endl;
 
-    for (int i = 0; i <n; i++)
+    while (!q.isEmpty())
     {
         q.pop();
     }
