@@ -35,45 +35,23 @@ int main()
         }
         
         
-        ll xi,MXi=0;
+        vector <pair<
         for (ll i = 0; i < n; i++)
         {
             ll cnt=0;
             for (ll j = 0; j < m; j++)
             {
                 if(v[i][j] == MX){
-                    cnt++;
+
                 }
-            }
-            if(MXi< cnt){
-                MXi=cnt;
-                xi=i;
             }
         }
 
-        ll xj,MXj=0;
-        for (ll i = 0; i < m; i++)
-        {
-            ll cnt=0;
-            for (ll j = 0; j < n; j++)
-            {
-                if(v[j][i] == MX){
-                    cnt++;
-                }
-            }
-            if(MXj< cnt){
-                MXj=cnt;
-                xj=i;
-            }
-        }
-        deb(xi);
-        deb(xj);
-        bool h=false;
         for (ll i = 0; i < n; i++)
         {
             for (ll j = 0; j < m; j++)
             {
-                if(v[i][j]==MX && (i!=xi || j!=xj)) {
+                if(v[i][j]==MX && (i!=xi && j!=xj)) {
                     h=true;
                 }
             }
