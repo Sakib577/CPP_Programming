@@ -1,10 +1,4 @@
-#include <iostream>
-#include <set>
-#include <algorithm>
-#include <map>
-#include <climits>
-#include <vector>
-#include <unordered_map>
+#include <bits/stdc++.h>
 #define fast_io                       \
     ios_base::sync_with_stdio(false); \
     cin.tie(nullptr)
