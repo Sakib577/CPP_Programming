@@ -20,20 +20,20 @@ int main()
 
     while (t--)
     {
-        vector <pair<ll,ll>> v(4);
-        for (ll i = 0; i < 4; i++)
-        {
-            cin >> v[i].first >> v[i].second;
+        ll x,y,a,b;
+        cin >> x>> y >> a >> b;
+
+        ll paya;
+        ll payb;
+        if(x > 0 == y > 0){
+            paya =abs(x-y)*a;
+            ll r=min(abs(x),abs(y));
+            payb =r*min(2*a,b);
+            
+            cout << paya+payb << endl;
+        }else{
+            cout << abs((max(x,y)-min(x,y))*a) << endl;
         }
-        
-        ll x;
-        for (ll i = 1; i < 4; i++)
-        {
-            if(v[i].first==v[0].first){
-                x=(v[0].second-v[i].second);
-            }
-        }
-        cout << x*x << endl;
     }
     return 0;
 }

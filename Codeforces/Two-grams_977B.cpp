@@ -7,7 +7,6 @@
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
 typedef long long ll;
-typedef __int128_t ll128;
 typedef unsigned long long ull;
 
 using namespace std;
@@ -15,25 +14,30 @@ using namespace std;
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll n;
+    cin >> n;
 
-    while (t--)
+    string s;
+    cin >> s;
+
+    unordered_map <string,ll> freq;
+
+    for (ll i = 0; i < n-1; i++)
     {
-        vector <pair<ll,ll>> v(4);
-        for (ll i = 0; i < 4; i++)
-        {
-            cin >> v[i].first >> v[i].second;
-        }
-        
-        ll x;
-        for (ll i = 1; i < 4; i++)
-        {
-            if(v[i].first==v[0].first){
-                x=(v[0].second-v[i].second);
-            }
-        }
-        cout << x*x << endl;
+        string t=s.substr(i,2);
+        freq[t]++;
     }
+    
+    ll MX=0;
+    string MXK;
+    for(auto &[k,v]: freq){
+        if(v>MX){
+            MX=v;
+            MXK=k;
+        }
+    }
+
+
+    cout << MXK << endl;
     return 0;
 }

@@ -17,23 +17,30 @@ int main()
     fast_io;
     ll t;
     cin >> t;
+    while(t--){
+        ll n,k;
+        cin >> n >> k;
 
-    while (t--)
-    {
-        vector <pair<ll,ll>> v(4);
-        for (ll i = 0; i < 4; i++)
+        string s;
+        cin >> s;
+
+        unordered_map <char,ll> freq;
+
+        for (ll i = 0; i < n; i++)
         {
-            cin >> v[i].first >> v[i].second;
+            freq[s[i]]++;
         }
         
-        ll x;
-        for (ll i = 1; i < 4; i++)
-        {
-            if(v[i].first==v[0].first){
-                x=(v[0].second-v[i].second);
-            }
+        ll oddc=0;
+        ll evenc=0;
+        for(auto &[k,v]: freq){
+            if(v&1) oddc++;
+            else evenc++;
         }
-        cout << x*x << endl;
+        if( k >= oddc-1 &&  oddc !=0 && ((k-oddc+1)%2==0 || (k-oddc)%2==0) || oddc ==0){
+            cout << "YES" << endl;
+        }else cout << "NO" << endl;
     }
+    
     return 0;
 }
