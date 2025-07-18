@@ -12,6 +12,13 @@ typedef unsigned long long ull;
 
 using namespace std;
 
+bool comp(pair<ll,pair<ll,ll>> a,pair<ll,pair<ll,ll>> b){
+    if(a.first == b.first){
+        if(a.second.first == b.second.first) return a.second.second < b.second.second;
+        else return a.second.first < b.second.first;
+    } else return a.first < b.first;
+}
+
 int main()
 {
     fast_io;
@@ -30,9 +37,7 @@ int main()
             cin >> l[i].first >> l[i].second.first >> l[i].second.second; 
         }
         
-        sort(all(l),[](auto &a,auto &b){
-            return ((a.first < b.first && a.second.first > b.second.first)? a.first < b.first && a.second.first > b.second.first:a.first < b.first);
-        });
+        sort(all(l),comp); // just pass function name, NOT comp()
 
         for (ll i = 0; i < n; i++)
         {
@@ -40,11 +45,11 @@ int main()
             // deb(l[i].second.first);
             // deb(l[i].second.second);
             // deb(k);
-            if(l[i].first <= k && l[i].second.second > k) {k+=l[i].second.first;
-                k-=l[i].first;
+            if(l[i].first <= k && l[i].second.first >= k) {
+                k=max(k,l[i].second.second);
             }
             else {
-                break;
+                continue;
             }
         }
         
