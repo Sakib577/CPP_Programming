@@ -12,12 +12,8 @@ typedef unsigned long long ull;
 
 using namespace std;
 
-bool comp(pair<ll,pair<ll,ll>> a,pair<ll,pair<ll,ll>> b){
-    // if(a.first == b.first){
-    //     if(a.second.first == b.second.first) return a.second.second < b.second.second;
-    //     else return a.second.first < b.second.first;
-    // } else return a.first < b.first;
-    return a.second.second < b.second.second;
+bool comp(array<ll,3> a,array<ll,3> b){
+    return a[2] < b[2];
 }
 
 int main()
@@ -31,23 +27,20 @@ int main()
         ll n,k;
         cin >>n >>k;
 
-        vector <pair<ll,pair<ll,ll>>> l(n);
+        vector <array<ll,3>> l(n);
         for (ll i = 0; i < n; i++)
         {
-            cin >> l[i].first >> l[i].second.first >> l[i].second.second; 
+            cin >> l[i][0] >> l[i][1] >> l[i][2]; 
         }
         
         sort(all(l),comp); // just pass function name, NOT comp()
 
         for (ll i = 0; i < n; i++)
         {
-            // deb(l[i].first);
-            // deb(l[i].second.first);
-            // deb(l[i].second.second);
-            // deb(k);
-            if(l[i].first <= k && l[i].second.first >= k) {
-                k=max(k,l[i].second.second);
+            if(l[i][0] <= k && l[i][1] >= k) {
+                k=max(k,l[i][2]);
             }
+            
         }
         
         cout << k << endl;
