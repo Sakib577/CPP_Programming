@@ -58,7 +58,7 @@ void quicksortdescend(int arr[], int beg, int end){
 
         stk.push({beg, j-1});
         stk.push({j+1, end});
-    }    
+    } 
 }
 
 int main()
