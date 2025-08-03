@@ -25,6 +25,39 @@ bool checkPow2(ll n){
     else return true;
 }
 
+ll powof2(ll n){
+    return 1<<n;
+}
+
+bool isPrime(ll n){
+    if(n<2) return false;
+    else for (ll i = 2; i*i <= n; i++) if(n%i==0) return false;
+    return true;
+}
+
+ll binPow(ll a, ll b){
+    ll res=1;
+    while (b>0)
+    {
+        if(b&1) res*=a;
+        a*=a;
+        b>>=1;
+    }
+    return res;
+}
+
+ll modExp(ll a, ll b, ll mod){
+    a=a%mod;
+    ll res=1;
+    while (b>0)
+    {
+        if(b&1) res=(a*res)%mod;
+        a=(a*a)%mod;
+        b>>=1;
+    }
+    return res;
+}
+
 int main()
 {
     fast_io;

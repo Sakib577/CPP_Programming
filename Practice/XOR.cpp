@@ -61,24 +61,35 @@ ll modExp(ll a, ll b, ll mod){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll a=5;
+    ll b=9;
+    deb(a);
+    deb(b);
 
-    while (t--)
-    {
-        ll n,x;
-        cin >>n>>x;
-        ll miu=0;
-        vector<ll> v(n);
-        for(ll &i:v)cin >> i;
+    a=a^b;
+    b=b^a;
+    a=a^b;
 
-        
-        for (ll i = 0; i < n; i++)
-        {
-            if(i<x)miu=miu&v[i];
-            else miu=miu|v[i];
-        }
-        cout << miu << endl;
+    deb(a);
+    deb(b);
+
+    // 2 ^ 4 ^ 6 ^ 7 ^ 7 ^ 4 ^ 2 ^ 2 ^ 2;
+    // this gives an warning if we accidentally mistook power with xor
+    // we use 2 values only
+    ll n;
+    cin >> n;
+    // vector <ll> v(n);
+    // for(ll &i:v) cin >> i;
+    // we don't even need this part
+
+    ll x;
+    ll y=0;
+    ll res=0;
+    for (ll i = 0; i < n; i++)
+    {   cin >> x;
+        res=y^x;
     }
+    
+    cout << x << endl;
     return 0;
 }
