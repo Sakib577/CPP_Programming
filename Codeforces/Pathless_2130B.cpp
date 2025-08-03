@@ -12,6 +12,19 @@ typedef unsigned long long ull;
 
 using namespace std;
 
+void printBin(ll n){
+    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    {
+        cout << ((n>>i)&1);
+    }
+    newl;
+}
+
+bool checkPow2(ll n){
+    if(n&(n-1)) return false;
+    else return true;
+}
+
 int main()
 {
     fast_io;
@@ -33,8 +46,41 @@ int main()
             sum+=v[i];
         }
 
-        if(sum>s) cout << -1 << endl;
+        if(sum>s) {
+            for (ll i = 0; i < n; i++) cout << v[i] << " ";
+            newl;
+        }
         else{
+            if(sum+1!=s) cout << -1 << endl;
+            else {
+                ll z=count(all(v),0);
+                ll o=count(all(v),1);
+                ll t=count(all(v),2);
+                for (ll i = 0; i < n; i++)
+                {
+                    if(z){
+                        v[i]=0;
+                        z--;
+                    } else {
+                        if(t){
+                            v[i]=2;
+                            t--;
+                            if(o && i+1<n){
+                                i++;
+                                v[i]=1;
+                                o--;
+                            }
+                        }else if(o!=0){
+                            v[i]=1;
+                        }
+                    }
+                }
+                for (ll i = 0; i < n; i++)
+                {
+                    cout << v[i] << " ";
+                }
+                newl;
+            }
             
         }
     }
