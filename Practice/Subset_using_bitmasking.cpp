@@ -68,12 +68,12 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
     ll n=nums.size(); 
     ll subsetCnt= (1<<n); // as number of subset is 2^n
     vector<vector<ll>> subset;
-    for (ll mask = 0; mask < subsetCnt; mask++)
+    for (ll i = 0; i < subsetCnt; i++)
     {
         vector<ll> v;
-        for (ll i = 0; i < n; i++)
+        for (ll mask = 0; mask < n; mask++)
         {
-            if(mask&(1<<i)) v.push_back(nums[i]);
+            if(i&(1<<mask)) v.push_back(nums[mask]);
         }
         subset.push_back(v);
     }

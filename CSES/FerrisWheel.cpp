@@ -13,7 +13,7 @@ typedef unsigned long long ull;
 using namespace std;
 
 void printBin(ll n){
-    for (ll i = 10; i >=0; i--) 
+    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
     {
         cout << ((n>>i)&1);
     }
@@ -74,38 +74,49 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
     return subset;
 }
 
+ll combination(ll n, ll r){
+    if(r>n || r < 0) return 0;
+    if(r>n-r) r=n-r;
+    ll res=1;
+    for (ll i = 1; i <= r; i++)
+    {
+        res=res*(n-r+i)/i;
+    }
+    return res;
+}
+
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll n,x;
+    cin >> n >> x;
 
-    while (t--)
+    vector<ll> v(n);
+
+    for(ll &i: v) cin >> i;
+
+    sort(all(v));
+
+    ll i=0;
+    ll j=n-1;
+    ll cnt=0;
+    while (i<=j)
     {
-        vector <string> v(3);
-        for(string &i:v) cin >> i;
-
-        
-        
-        for (ll i = 0; i < 3; i++)
-        {
-            ll x=0;
-            for (ll j = 0; j < 3; j++)
-            {
-                if(v[i][j]=='A') x|=1<<0;
-                if(v[i][j]=='B') x|=1<<1;
-                if(v[i][j]=='C') x|=1<<2;
-            }
-            if(x==0b111) continue;
-            else {
-                if(x==0b110) cout << "A" << endl;
-                else if(x==0b101) cout << "B" << endl;
-                else cout << "C" << endl;
-                break;
-            }
+        if(v[i]+v[j]<=x){
+            i++;
+            j--;
+            cnt++;
+        } else  if(i==j){
+            cnt++;
+            i++;
+        } else {
+            j--;
+            cnt++;
         }
-        
     }
     
+    cout << cnt << endl;
+    
+
    return 0;
 }
