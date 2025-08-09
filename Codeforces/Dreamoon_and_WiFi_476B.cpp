@@ -13,7 +13,7 @@ typedef unsigned long long ull;
 using namespace std;
 
 void printBin(ll n){
-    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    for (ll i = 10; i >=0; i--) 
     {
         cout << ((n>>i)&1);
     }
@@ -88,15 +88,26 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    string s,t;
+    cin >> s >> t;
 
-    while (t--)
-    {
-        ll n;
-        cin >> n;
+    ll cntm1=count(all(s),'-');
+    ll cntm2=count(all(t),'-');
+    ll cntp1=count(all(s),'+');
+    ll cntp2=count(all(t),'+');
+    ll cntw=count(all(t),'?');
+    if(cntm1==cntm2 && cntp1==cntp2) cout << fixed << setprecision(12) << (double)1 << endl;
+    else if(cntm1>=cntm2 && cntp1>=cntp2){
+        double x;
+        ll diff=(cntp1-cntm1)-(cntp2-cntm2);
+        if((diff+cntw)%2!=0) cout << fixed << setprecision(12) << (double)0 << endl;
+        else{
+            ll pneed=(diff+cntw)/2;
+            x=((double)combination(cntw,pneed))/binPow(2,cntw);
+            cout << fixed << setprecision(12) << x << endl;
+        }
+        
     }
-    
-
-   return 0;
+    else cout << fixed << setprecision(12) << (double)0 << endl;
+    return 0;
 }

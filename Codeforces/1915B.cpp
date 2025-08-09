@@ -13,7 +13,7 @@ typedef unsigned long long ull;
 using namespace std;
 
 void printBin(ll n){
-    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    for (ll i = 10; i >=0; i--) 
     {
         cout << ((n>>i)&1);
     }
@@ -74,17 +74,6 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
     return subset;
 }
 
-ll combination(ll n, ll r){
-    if(r>n || r < 0) return 0;
-    if(r>n-r) r=n-r;
-    ll res=1;
-    for (ll i = 1; i <= r; i++)
-    {
-        res=res*(n-r+i)/i;
-    }
-    return res;
-}
-
 int main()
 {
     fast_io;
@@ -93,10 +82,19 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        string s;
+
+        for (ll i = 0; i < 3; i++)
+        {
+            cin >> s;
+            if(s[0]+s[1]+s[2]!='A'+'B'+'C') {
+                cout << (char)('A'+'B'+'C'-(s[0]+s[1]+s[2]-'?')) << endl;
+            } 
+        }
+        
+        
+        
     }
     
-
    return 0;
 }
