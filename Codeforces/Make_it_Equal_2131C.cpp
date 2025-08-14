@@ -89,8 +89,35 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,k;
+        cin >> n >> k;
+
+        vector <ll> s(n),t(n);
+        
+
+        for(ll &i: s) cin >> i;
+        for(ll &i: t) cin >> i;
+
+        for (ll i = 0; i < n; i++)
+        {
+            s[i]=min(s[i]%k,k-s[i]%k);
+            t[i]=min(t[i]%k,k-t[i]%k);
+            
+        }
+        
+        sort(all(s));
+        sort(all(t));
+
+        bool yes=true;
+        for (ll i = 0; i < n; i++)
+        {
+            if(s[i]!=t[i]) yes=false;
+            // deb(s[i]);
+            // deb(t[i]);
+        }
+        
+        
+        cout << (yes?"YES":"NO") << endl;
     }
     
 

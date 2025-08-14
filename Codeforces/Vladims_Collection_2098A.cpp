@@ -13,7 +13,11 @@ typedef unsigned long long ull;
 using namespace std;
 
 void printBin(ll n){
-    cout << bitset<64>(n).to_string().substr(64-10) << endl;
+    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    {
+        cout << ((n>>i)&1);
+    }
+    newl;
 }
 
 bool checkPow2(ll n){
@@ -63,22 +67,11 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
         vector<ll> v;
         for (ll mask = 0; mask < n; mask++)
         {
-            if(i&(1<<mask)) v.push_back(nums[mask]);
+            if(mask&(1<<i)) v.push_back(nums[i]);
         }
         subset.push_back(v);
     }
     return subset;
-}
-
-ll combination(ll n, ll r){
-    if(r>n || r < 0) return 0;
-    if(r>n-r) r=n-r;
-    ll res=1;
-    for (ll i = 1; i <= r; i++)
-    {
-        res=res*(n-r+i)/i;
-    }
-    return res;
 }
 
 int main()
@@ -86,13 +79,36 @@ int main()
     fast_io;
     ll t;
     cin >> t;
-
     while (t--)
     {
-        ll n;
-        cin >> n;
+        string s;
+        cin >> s;
+        ll n=10;
+
+        multiset <ll> digits;
+
+        for (ll i = 0; i < n; i++)
+        {
+            digits.insert((s[i]-'0'));
+        }
+        
+        ll res=0;
+
+        for (ll i = 0; i < n; i++)
+        {
+            ll req=9-i;
+
+            auto it=digits.lower_bound(req);
+            res= (res*10) + *it;
+            digits.erase(it);
+        }
+        
+        cout << res;
+        newl;
+        
+
+        
     }
     
-
    return 0;
 }

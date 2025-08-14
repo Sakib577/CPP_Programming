@@ -12,11 +12,13 @@ typedef unsigned long long ull;
 
 using namespace std;
 void printBin(ll n){
-    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
-    {
-        cout << ((n>>i)&1);
-    }
-    newl;
+    // for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    // {
+    //     cout << ((n>>i)&1);
+    // }
+    // newl;
+    cout << bitset<64>(n).to_string().substr(64-10) << endl;
+
 }
 
 bool checkPow2(ll n){

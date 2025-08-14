@@ -89,10 +89,25 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll a1,a2,a4,a5;
+        cin  >> a1>> a2 >> a4>> a5;
+
+        ll x,y,z;
+        x=a1+a2;
+        y=a4-a2;
+        z=a5-a4;
+
+        map <ll,ll> freq;
+        freq[x]++;
+        freq[y]++;
+        freq[z]++;
+        ll MX=0;
+        for(auto &[k,v]:freq){
+            if(v>MX) MX=v;
+        }
+        cout << MX << endl;
     }
     
 
-   return 0;
+   return 0;    
 }

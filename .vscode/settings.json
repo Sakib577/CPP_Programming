@@ -6,6 +6,7 @@
         "cmath": "cpp",
         "vector": "cpp",
         "algorithm": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "bitset": "cpp"
     }
 }

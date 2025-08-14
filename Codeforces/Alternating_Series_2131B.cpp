@@ -91,6 +91,23 @@ int main()
     {
         ll n;
         cin >> n;
+
+        vector <ll> v(n);
+
+        ll x;
+        if(n>2) x=3;
+        else x=2;
+
+        for (ll i = 0; i < n; i++)
+        {
+            if(i&1) v[i]=x;
+            else v[i]=-1;
+        }
+        
+        if(!(n&1))v[n-1]=2;
+
+        for(ll &i: v) cout << i << " ";
+        newl;
     }
     
 

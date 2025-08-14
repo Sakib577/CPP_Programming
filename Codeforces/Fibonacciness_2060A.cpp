@@ -89,10 +89,25 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,m,l,r;
+        cin >> n >> m >> l >> r;
+
+        ll lx=0,rx=0;
+
+        if(m>r){ 
+            rx=r;
+            m=m-r;
+        }
+        else{
+            rx=m;
+            m=0;
+        }
+
+        lx=-m;
+
+        cout << lx << " " << rx << endl;
     }
     
 
-   return 0;
+   return 0;    
 }

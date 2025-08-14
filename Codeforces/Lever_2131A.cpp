@@ -91,6 +91,20 @@ int main()
     {
         ll n;
         cin >> n;
+        
+        vector <ll> a(n),b(n);
+
+        for(ll &i: a) cin >> i;
+        for(ll &i: b) cin >> i;
+        
+        ll sum=0;
+        for (ll i = 0; i < n; i++)
+        {
+            if(a[i]>b[i])
+            sum+= (a[i]-b[i]);
+        }
+        
+        cout << sum+1 << endl;
     }
     
 

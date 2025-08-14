@@ -12,8 +12,8 @@ typedef unsigned long long ull;
 
 using namespace std;
 
-void printBin(ll n){
-    cout << bitset<64>(n).to_string().substr(64-10) << endl;
+void printBin(ll n,ll x){
+    cout << bitset<64>(n).to_string().substr(64-x) << endl;
 }
 
 bool checkPow2(ll n){
@@ -84,15 +84,15 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll n;
+    cin >> n;
 
-    while (t--)
+    ll x=1<<n;
+
+    for (ll i = 0; i < x; i++)
     {
-        ll n;
-        cin >> n;
+        printBin(i,n);
     }
-    
 
    return 0;
 }

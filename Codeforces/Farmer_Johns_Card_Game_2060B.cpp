@@ -13,7 +13,11 @@ typedef unsigned long long ull;
 using namespace std;
 
 void printBin(ll n){
-    cout << bitset<64>(n).to_string().substr(64-10) << endl;
+    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    {
+        cout << ((n>>i)&1);
+    }
+    newl;
 }
 
 bool checkPow2(ll n){
@@ -63,22 +67,11 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
         vector<ll> v;
         for (ll mask = 0; mask < n; mask++)
         {
-            if(i&(1<<mask)) v.push_back(nums[mask]);
+            if(mask&(1<<i)) v.push_back(nums[i]);
         }
         subset.push_back(v);
     }
     return subset;
-}
-
-ll combination(ll n, ll r){
-    if(r>n || r < 0) return 0;
-    if(r>n-r) r=n-r;
-    ll res=1;
-    for (ll i = 1; i <= r; i++)
-    {
-        res=res*(n-r+i)/i;
-    }
-    return res;
 }
 
 int main()
@@ -89,10 +82,59 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,m;
+        cin >> n >> m ;
+
+        vector <pair<ll,ll>> v(n*m);
+        // vector <ll> ans(n);
+        unordered_set <ll> st;
+
+        ll x=0;
+        for (ll i = 0; i < n*m; i++)
+        {
+            
+            cin >> v[i].first;
+            v[i].second=i/m;
+        }
+        
+        sort(all(v));
+
+        bool yes=true;
+        vector <ll> pattern(n);
+
+        for (ll i = 0; i < n; i++)
+        {
+            pattern[i]=v[i].second+1;
+        }
+        for (ll i = 0; i < m; i++)
+        {
+            for (ll j = 0; j < n; j++)
+            {
+                if(v[i*n+j].second+1!=pattern[j]){
+                    yes=false;
+                    break;
+                }
+            }
+        }
+
+        // vector <ll> temp;
+        // for(ll i: st){
+        //     temp.push_back(i);
+        // }
+        
+        // reverse(all(temp));
+        
+        if(yes || n==1){
+            for (ll i = 0; i < n; i++)
+            {
+                cout << pattern[i] << " ";
+            }
+            
+            newl;
+        } else {
+            cout << -1 << endl;
+        }
     }
     
-
    return 0;
 }
