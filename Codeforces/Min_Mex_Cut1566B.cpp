@@ -9,12 +9,15 @@
 typedef long long ll;
 typedef __int128_t ll128;
 typedef unsigned long long ull;
-const ll M = 1e9+7;
 
 using namespace std;
 
 void printBin(ll n){
-    cout << bitset<64>(n).to_string().substr(64-10) << endl;
+    for (ll i = 10; i >=0; i--) // for 11 bits i=10 to i=0
+    {
+        cout << ((n>>i)&1);
+    }
+    newl;
 }
 
 bool checkPow2(ll n){
@@ -64,22 +67,11 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
         vector<ll> v;
         for (ll mask = 0; mask < n; mask++)
         {
-            if(i&(1<<mask)) v.push_back(nums[mask]);
+            if(mask&(1<<i)) v.push_back(nums[i]);
         }
         subset.push_back(v);
     }
     return subset;
-}
-
-ll combination(ll n, ll r){
-    if(r>n || r < 0) return 0;
-    if(r>n-r) r=n-r;
-    ll res=1;
-    for (ll i = 1; i <= r; i++)
-    {
-        res=res*(n-r+i)/i;
-    }
-    return res;
 }
 
 int main()
@@ -90,10 +82,30 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        string s;
+        cin >> s;
+
+        ll cnt0=count(all(s),'0');
+        ll cnt1=count(all(s),'1');
+
+        ll cnt=0;
+        if(cnt0==0) cout << 0 << endl;
+        else if(cnt1==0) cout << 1 << endl;
+        else{
+            bool con0=false;
+            ll cnt=0;
+            for (ll i = 0; i < s.size(); i++)
+            {
+                if(s[i]=='0' && con0==false){
+                    con0=true;
+                    cnt++;
+                } else if(s[i]=='0' && con0){
+                    continue;
+                } else con0=false;
+            }
+            cout << (cnt>=2?2:cnt) << endl;
+        }
     }
     
-
    return 0;
 }

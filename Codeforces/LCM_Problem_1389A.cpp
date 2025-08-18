@@ -90,8 +90,11 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll l,r;
+        cin >> l >> r;
+
+        if(l*2<=r) cout << l << " " << 2*l << endl;
+        else cout << -1 << " " << -1 << endl;
     }
     
 
