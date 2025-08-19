@@ -87,14 +87,28 @@ int main()
 {
     fast_io;
     ll t;
-    cin >> t;
-
-    while (t--)
+    cin>>t;
+    while(t--)
     {
-        ll n;
-        cin >> n;
+        ll n,k;
+        cin >> n >> k;
+
+        vector <ll> v(n*k);
+
+        for(ll &i: v) cin >> i;
+
+        ll median=(n+1)/2;
+        ll diff=n-median;
+        ll sum=0;
+        sort(all(v));
+        for (ll i = 0,j =n*k; i<k ; i++)
+        {
+            j-=diff;
+            if(i!=0)j--;
+            sum+=v[j-1];
+        }
+        cout << sum << el;
     }
     
-
    return 0;
 }

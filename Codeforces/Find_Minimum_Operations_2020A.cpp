@@ -6,7 +6,6 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define el "\n"
 typedef long long ll;
 typedef __int128_t ll128;
 typedef unsigned long long ull;
@@ -91,8 +90,34 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,k;
+        cin >> n>> k;
+
+        if(n < k || k==1) cout << n << endl;
+        else if(n==k) cout << 1 << endl;
+        else{
+            ll x=1;
+            while (binPow(k,x+1)<=n)
+            {
+                x++;
+            }
+            
+            ll res=0;
+            while (true)
+            {
+                ll s=binPow(k,x);
+                res+=n/s;
+                x--;
+                n%=s;
+                if(n<k){
+                    res+=n;
+                    break;
+                }
+            }
+            
+            cout << res << endl;
+        }
+
     }
     
 
