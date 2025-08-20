@@ -81,6 +81,30 @@ ll combination(ll n, ll r){
     return res;
 }
 
+vector <string> grayCode(ll n){
+
+    if(n==0) return {};
+    if(n==1) return {"0","1"};
+    
+    vector <string> res;
+    vector <string> resmin1;
+
+    resmin1=grayCode(n-1);
+
+    for (ll i = 0; i < resmin1.size(); i++)
+    {
+        res.push_back("0"+resmin1[i]);
+    }
+    
+    for (ll i = resmin1.size()-1; i>=0; i--)
+    {
+        res.push_back("1"+resmin1[i]);
+    }
+
+    return res;
+    
+}
+
 int main()
 {
     fast_io;
@@ -89,10 +113,9 @@ int main()
 
     ll x=1<<n;
 
-    for (ll i = 0; i < x; i++)
-    {
-        printBin(i,n);
-    }
+    vector<string> v;
+    v=grayCode(n);
 
+    for(auto i: v) cout << i << "\n";
    return 0;
 }

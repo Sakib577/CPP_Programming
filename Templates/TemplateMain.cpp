@@ -24,7 +24,7 @@ bool checkPow2(ll n){
 }
 
 ll powof2(ll n){
-    return 1<<n;
+    return 1LL<<n;
 }
 
 bool isPrime(ll n){
