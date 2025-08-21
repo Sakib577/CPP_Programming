@@ -8,7 +8,6 @@
 #define newl cout << endl
 #define el "\n"
 typedef long long ll;
-typedef __int128_t ll128;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
 
@@ -39,7 +38,7 @@ ll binPow(ll a, ll b){
     {
         if(b&1) res*=a;
         a*=a;
-        b>>=1;
+        b>>=1LL;
     }
     return res;
 }
@@ -51,7 +50,7 @@ ll modExp(ll a, ll b, ll mod){
     {
         if(b&1) res=(a*res)%mod;
         a=(a*a)%mod;
-        b>>=1;
+        b>>=1LL;
     }
     return res;
 }
