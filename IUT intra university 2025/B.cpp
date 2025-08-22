@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -92,6 +92,21 @@ int main()
     {
         ll n;
         cin >> n;
+
+        string s="";
+        while (n>0)
+        {
+            if(n>=1000) {s+="M"; n-=1000;}
+            else if(n>=500){ if(n>=900){s+="CM";n-=900;} else{s+="D"; n-=500;}}
+            else if(n>=100){ if(n>=400){s+="CD";n-=400;} else{s+="C"; n-=100;}}
+            else if(n>=50){if(n>=90){s+="XC";n-=90;} else{s+="L"; n-=50;}}
+            else if(n>=10){if(n>=40){s+="XL";n-=40;} else{s+="X"; n-=10;}}
+            else if(n>=5){if(n==9){s+="IX";n-=9;}else{s+="V"; n-=5;}}
+            else if(n==4){s+="IV";n-=4;} else {s+="I"; n-=1;}
+        }
+        
+
+        cout << s << el;
     }
     
 

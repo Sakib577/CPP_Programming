@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -90,8 +90,23 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,m;
+        cin >> n>> m;
+
+        vector <ll> t(n),s(n);
+
+        for(ll &i: s) cin >> i;
+        for(ll &i: t) cin >> i;
+
+        double sum=0;
+        for (ll i = 0; i < n; i++)
+        {
+            sum+=(double)1/(t[i]-s[i]+1);
+        }
+        
+        double mean=sum/n;
+
+        cout << mean << el;
     }
     
 

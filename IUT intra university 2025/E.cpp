@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -71,16 +71,21 @@ vector<vector<ll>> subsets(vector<ll>& nums) {
     return subset;
 }
 
-ll combination(ll n, ll r){
-    if(r>n || r < 0) return 0;
-    if(r>n-r) r=n-r;
-    ll res=1;
-    for (ll i = 1; i <= r; i++)
-    {
-        res=res*(n-r+i)/i;
-    }
-    return res;
-}
+// ll modinv(ll a) {
+//     return modExp(a, M - 2, M);
+// }
+
+// ll combination(ll n, ll r){
+//     if(r>n || r < 0) return 0;
+//     if(r>n-r) r=n-r;
+//     ll res=1;
+//     for (ll i = 1; i <= r; i++)
+//     {
+//         res=(((res%M)*(((n-r+i)%M)%M))%M);
+//         res=((res%M)*modinv(i))%M;
+//     }
+//     return res;
+// }
 
 int main()
 {
@@ -92,6 +97,19 @@ int main()
     {
         ll n;
         cin >> n;
+
+        string s;
+        cin >> s;
+
+        map<char,ll> freq;
+        for (ll i = 0; i < n; i++)
+        {
+            freq[s[i]]++;
+        }
+        
+        
+
+        cout << modExp(2,(n-freq.size()),M) << el;
     }
     
 

@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -85,15 +85,44 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
+
+    vector <ll> power(19,1);
+    for (ll i = 1; i <= 18; i++)
+    {
+        power[i]=10LL*power[i-1];
+    }
+    
+
     ll t;
     cin >> t;
-
     while (t--)
     {
         ll n;
         cin >> n;
+
+        set <ll> st;
+
+
+        vector<ll> poss;
+
+        for (ll i = 1; i < n; i++)
+        {
+            ll x=power[i]+1;
+            if(x>n) break;
+            if(n%x==0) poss.push_back(n/x);
+
+        }
+        
+        sort(all(poss));
+
+        if(poss.size()==0) cout << 0 << el;
+        else {
+            cout << poss.size() << el;
+            for(auto i: poss){ cout << i << " ";}
+            newl;    
+        }
+        
     }
     
-
    return 0;
 }

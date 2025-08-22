@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -87,13 +87,27 @@ int main()
     fast_io;
     ll t;
     cin >> t;
-
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,m;
+        string a, b, c;
+        cin >> n >> a;
+        cin >> m >> b;
+        cin >> c;
+
+        for (ll i = 0; i < m; i++)
+        {
+            if(c[i]=='D'){
+                a+=b[i];
+            }else a=b[i]+a;
+        }
+        
+
+        cout << a << el;
+
+        
+    
     }
     
-
    return 0;
 }

@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -85,15 +85,24 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll n;
+    cin >> n;
 
-    while (t--)
+    ll cnt=0;
+    ll sum=0;
+    for (ll i = 1; i*i <= n; i++)
     {
-        ll n;
-        cin >> n;
+        if(n%i==0){
+            cout << i << " " << n/i << el;
+            sum+=i;
+            cnt++;
+            if(i!=n/i) {cnt++; sum+=n/i;}
+
+        }
     }
     
 
+    deb(cnt);
+    deb(sum);
    return 0;
 }

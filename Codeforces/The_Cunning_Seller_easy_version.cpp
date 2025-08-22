@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define endl "\n"
+#define el "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -85,15 +85,48 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
+    vector<ll> v,d;
+    ll x=1;
+    ll y=0;
+    d.push_back(0);
+    v.push_back(1);
+    while (y < 1e9)
+    {
+        
+        y=binPow(3,x+1)+x*(binPow(3,x-1));
+        if(y > 1e9) break;
+        v.push_back(y);
+        d.push_back(binPow(3,x));
+        x++;
+    }
+    
+    
     ll t;
     cin >> t;
-
     while (t--)
     {
         ll n;
         cin >> n;
+
+        ll res=0;
+        while (n>0)
+        {
+            auto it = upper_bound(all(d), n);
+            if (it == d.begin()) {
+                res += v[0]*n;
+                break;
+            }
+            it--;
+            ll index=it-d.begin();
+            ll x=*it;
+            res+=v[index];
+            n-=x;
+        }
+        
+        cout << res << el;
+
     }
     
-
+    
    return 0;
 }

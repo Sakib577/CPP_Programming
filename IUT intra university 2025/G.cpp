@@ -90,10 +90,45 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,l;
+        cin >> n>> l;
+
+        vector <ll> v(n);
+
+        ll i=0;
+        ll j=2;
+        ll prod=1;
+        bool EXIT= false;
+        while (i<n)
+        {
+            if(isPrime(j)){v[i]=j;i++;
+                
+                if(prod>l/j) {
+                    cout << -1 << endl;
+                    EXIT=true;
+                    break;
+                }
+                prod=prod*j;
+            }
+            j++;
+            
+        }
+        
+        if(EXIT) continue;
+
+            for (ll i = 0; i < n; i++)
+            {
+                cout << prod/v[i] << " ";
+            }
+            
+
+            newl;
+            
+        
+        
     }
     
+
 
    return 0;
 }
