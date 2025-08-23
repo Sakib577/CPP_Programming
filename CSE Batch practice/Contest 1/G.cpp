@@ -88,11 +88,12 @@ int main()
     ll n;
     cin >> n;
     ll sum=0;
-    for (ll i = 1; i <= n; i++)
+    for (ll i = 1; i <= n/2; i++)
     {
         sum=(sum+(n/i)*i)%M;
     }
 
+    sum=(sum+((n*(((n/2)+1)+n))/2))%M;
     cout << sum << endl;
     
 

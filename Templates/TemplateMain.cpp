@@ -55,22 +55,6 @@ ll modExp(ll a, ll b, ll mod){
     return res;
 }
 
-vector<vector<ll>> subsets(vector<ll>& nums) {
-    ll n=nums.size(); 
-    ll subsetCnt= (1<<n); // as number of subset is 2^n
-    vector<vector<ll>> subset;
-    for (ll i = 0; i < subsetCnt; i++)
-    {
-        vector<ll> v;
-        for (ll mask = 0; mask < n; mask++)
-        {
-            if(i&(1<<mask)) v.push_back(nums[mask]);
-        }
-        subset.push_back(v);
-    }
-    return subset;
-}
-
 ll combination(ll n, ll r){
     if(r>n || r < 0) return 0;
     if(r>n-r) r=n-r;
