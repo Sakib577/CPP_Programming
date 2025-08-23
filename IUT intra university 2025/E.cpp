@@ -107,8 +107,6 @@ int main()
             freq[s[i]]++;
         }
         
-        
-
         cout << modExp(2,(n-freq.size()),M) << el;
     }
     
