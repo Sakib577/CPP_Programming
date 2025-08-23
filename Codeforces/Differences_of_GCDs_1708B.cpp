@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define el "\n"
+#define endl "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -87,32 +87,30 @@ int main()
     fast_io;
     ll t;
     cin >> t;
+
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,l,r;
+        cin >> n>> l>> r;
 
-        vector<ll> poss;
+        bool yes=true;
 
-        ll pow=10;
-        for (ll i = 1; i < n; i++)
+        vector<ll> v;
+
+        for (ll i = 1; i <= n;i++)
         {
-            ll x=pow+1;
-            if(x>n) break;
-            if(n%x==0) poss.push_back(n/x);
-            pow*=10;
+            if((r/i)*i>=l) v.push_back((r/i)*i);
         }
-        
-        sort(all(poss));
-
-        if(poss.size()==0) cout << 0 << el;
+        // deb(v.size());
+        if(v.size()!=n) cout << "NO" << endl;
         else {
-            cout << poss.size() << el;
-            for(auto i: poss){ cout << i << " ";}
-            newl;    
+            cout << "YES" << endl;
+            for(ll &i: v) cout << i << " ";
+
+            newl;
         }
-        
     }
     
-   return 0;
+
+return 0;
 }
