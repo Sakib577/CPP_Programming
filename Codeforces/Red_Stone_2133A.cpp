@@ -6,7 +6,7 @@
 #define revall(v) v.rbegin(), v.rend()
 #define deb(x) cout << #x << " = " << x << '\n';
 #define newl cout << endl
-#define el "\n"
+#define endl "\n"
 typedef long long ll;
 typedef unsigned long long ull;
 const ll M = 1e9+7;
@@ -55,22 +55,6 @@ ll modExp(ll a, ll b, ll mod){
     return res;
 }
 
-vector<vector<ll>> subsets(vector<ll>& nums) {
-    ll n=nums.size(); 
-    ll subsetCnt= (1<<n); // as number of subset is 2^n
-    vector<vector<ll>> subset;
-    for (ll i = 0; i < subsetCnt; i++)
-    {
-        vector<ll> v;
-        for (ll mask = 0; mask < n; mask++)
-        {
-            if(i&(1<<mask)) v.push_back(nums[mask]);
-        }
-        subset.push_back(v);
-    }
-    return subset;
-}
-
 ll combination(ll n, ll r){
     if(r>n || r < 0) return 0;
     if(r>n-r) r=n-r;
@@ -85,45 +69,28 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    vector<ll> v,d;
-    ll x=1;
-    ll y=1;
-    d.push_back(1);
-    v.push_back(3);
-    ll z=1e9;
-    while (*(d.end()-1) <= z)
-    {
-        
-        y=binPow(3,x+1)+x*(binPow(3,x-1));
-        
-        v.push_back(y);
-        d.push_back(binPow(3,x));
-        x++;
-    }
-    
-    
     ll t;
     cin >> t;
+
     while (t--)
     {
         ll n;
         cin >> n;
 
-        ll res=0;
-        while (n>0)
+        set<ll> st;
+
+        for (ll i = 0; i < n; i++)
         {
-            auto it = upper_bound(all(d), n);
-            it--;
-            ll index=it-d.begin();
-            
-            res+=v[index];
-            n-=d[index];
+            ll in;
+            cin >> in;
+            st.insert(in);
         }
         
-        cout << res << el;
 
+        if(st.size()!=n) cout << "YES" << endl;
+        else cout << "NO" << endl;
     }
     
-    
-   return 0;
+
+return 0;
 }
