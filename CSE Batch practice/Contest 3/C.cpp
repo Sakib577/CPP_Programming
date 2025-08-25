@@ -69,15 +69,29 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    string s;
+    cin >> s;
 
-    while (t--)
+    ll li=-1;
+    ll MX=0;
+    bool y=false;
+    ll n=s.size();
+    for (ll i = 0; i < n; i++)
     {
-        ll n;
-        cin >> n;
+        if(s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U' || s[i]=='Y'){
+            MX=max(MX,(i-li));
+            li=i;
+            if(n-1==i) y=true;
+        
+        }
+
+    }
+    if(!y){
+        
+        MX=max(MX,(n-li));
     }
     
+    cout << MX << endl;
 
     return 0;
 }

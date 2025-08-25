@@ -69,15 +69,22 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll n;
+    cin >> n;
 
-    while (t--)
+    ll x,y;
+    ll MX=0;
+    ll res;
+    for (ll i = 0; i < n; i++)
     {
-        ll n;
-        cin >> n;
+        cin >> x >> y;
+
+        if(x>=MX || y>=MX){
+            MX=max(x,y);
+            res=max(res,x+y);
+        }
     }
     
-
+    cout << res << endl;
     return 0;
 }

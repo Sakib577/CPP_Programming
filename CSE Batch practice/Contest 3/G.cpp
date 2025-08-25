@@ -76,8 +76,37 @@ int main()
     {
         ll n;
         cin >> n;
+
+        string a,b;
+        cin >> a >> b;
+
+        ll diff=0;
+
+        ll cnt0=0;
+        ll cnt1=0;
+        bool yes=true;
+        ll x=0;
+        for (ll i = 0,j=0; i < a.size(); i++)
+        {
+            j++;
+            if(a[i]=='0')cnt0++;
+            if(a[i]=='1')cnt1++;
+            if(a[i]!=b[i]) diff++;
+            if(cnt0==cnt1){
+                x++;
+                if(diff!=0 && diff!=j) yes=false;
+                cnt0=0;
+                cnt1=0;
+                diff=0;
+                j=0;
+            }
+        }
+        
+        if(x==0 && a!=b)yes=false;
+        
+        cout << (yes?"YES":"NO") << endl;
     }
     
 
-    return 0;
+   return 0;
 }

@@ -69,15 +69,10 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    string n,k;
+    cin >> n >> k;
 
-    while (t--)
-    {
-        ll n;
-        cin >> n;
-    }
-    
-
+    if(n==k) cout << n << endl;
+    else cout << 1 << endl;
     return 0;
 }
