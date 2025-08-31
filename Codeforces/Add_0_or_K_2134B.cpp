@@ -69,21 +69,69 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll n;
-    cin >> n;
+    ll t;
+    cin >> t;
 
-    ll x,y;
-    ll MX=0;
-    ll res=0;
-    for (ll i = 0; i < n; i++)
+    while (t--)
     {
-        cin >> x >> y;
+        ll n,k;
+        cin >> n >> k;
 
+        vector <ull> v(n);
+
+        ll MX=0;
+        bool odd=false;
+        bool one=false;
+        for(ull &i:v) {
+            cin >> i;
+            if(i&1)odd=true;
+            if(i>MX) MX=i;
+            if(i==1)one=true;
+        }
+
+        if((n==1 || !odd)&& !one){
+            for (ll i = 0; i < n; i++)
+            {
+                cout << v[i] << " ";
+            }
+        } else {
+            if(k&1){
+                for (ll i = 0; i < n; i++)
+                {
+                    if(v[i]&1)v[i]+=k;
+                }
+                
+            }else {
+                for (ll i = 0; i < n; i++)
+                {
+                    if(v[i]<=k) v[i]=v[i]+(v[i]*k);
+                    else{
+                       
+                        ll x=0;
+                        while (x<k && gcd(v[i],MX)==1)
+                        {
+                            v[i]+=k;
+                            x++;
+                        }
+                    }
+                }
+            }
+            
+
+
+
+            for (ll i = 0; i < n; i++)
+            {
+                cout << v[i] << " ";
+            }
+        }
         
-            res=max(res,x+y);
+        
+        
+        newl;
         
     }
     
-    cout << res << endl;
+
     return 0;
 }

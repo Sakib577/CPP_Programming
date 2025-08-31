@@ -69,21 +69,26 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll n;
-    cin >> n;
+    ll t;
+    cin >> t;
 
-    ll x,y;
-    ll MX=0;
-    ll res=0;
-    for (ll i = 0; i < n; i++)
+    
+    while (t--)
     {
-        cin >> x >> y;
+        ll n;
+        cin >> n;
+        vector <ll> v(n);
+        for(ll &i:v) cin >>i;
 
+        ll cnt=0;
+        for (ll i = 0; i < n-1; i++)
+        {
+            if(v[i]==v[i+1])cnt++;
+        }
         
-            res=max(res,x+y);
-        
+        cout << n-cnt <<  endl;
     }
     
-    cout << res << endl;
+
     return 0;
 }

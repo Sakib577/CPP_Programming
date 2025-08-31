@@ -76,38 +76,55 @@ int main()
     {
         ll n;
         cin >> n;
+        
+        vector <ll> v(n);
 
-        string a,b;
-        cin >> a >> b;
+        for(ll &i:v) cin >> i;
 
-        ll diff=0;
-
-        ll cnt0=0;
-        ll cnt1=0;
-        bool yes=true;
-        ll x=0;
-        ll j=0;
-        for (ll i = 0; i < a.size(); i++)
+        ll y=2e5+1;
+        vector<pair<ll,ll>> p(y);
+        for (ll i = 0; i < n; i++)
         {
-            j++;
-            if(a[i]=='0')cnt0++;
-            if(a[i]=='1')cnt1++;
-            if(a[i]!=b[i]) diff++;
-            if(cnt0==cnt1){
-                x++;
-                if(diff!=0 && diff!=j) yes=false;
-                cnt0=0;
-                cnt1=0;
-                diff=0;
-                j=0;
+            ll in=i+1;
+            if (p[v[i]].first == 0) p[v[i]].first = in;
+            p[v[i]].second=in;
+        }
+
+        ll sum=0;
+        ll lastsum=0;
+        ll lastl=0;
+        ll lastr=0;
+
+        ll MX=*max_element(all(v));
+
+        for (ll i=0;i<=MX;i++)
+        {
+            // deb(p[i].first);
+            // deb(p[i].second);
+            if((p[i].second-p[i].first+1< i) || (p[i].second==0 && p[i].first==0)) continue;
+            if(p[i].first<=lastl || p[i].second>=lastr){
+                // deb(p[i].second-p[i].first+1);
+                if(p[i].second-p[i].first+1 > lastsum){
+                    sum-=lastsum;
+                    sum+=p[i].second-p[i].first+1;
+                    lastsum=p[i].second-p[i].first+1;
+                    lastl=p[i].first;
+                    lastr=p[i].second;  
+                }
+            } else{
+                    sum+=p[i].second-p[i].first+1;
+                    lastsum=p[i].second-p[i].first+1;
+                    lastl=p[i].first;
+                    lastr=p[i].second;
+                    // lastsum=0;
             }
         }
         
-        if(x==0 && a!=b)yes=false;
+        cout << sum << endl;
         
-        cout << (yes?"YES":"NO") << endl;
+        
     }
     
 
-   return 0;
+    return 0;
 }

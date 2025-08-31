@@ -69,21 +69,50 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll n;
-    cin >> n;
+    ll n,k;
+    cin >> n>> k;
 
-    ll x,y;
-    ll MX=0;
-    ll res=0;
-    for (ll i = 0; i < n; i++)
+    vector <ll> cntn(6),cntk(6);
+    while (n%5==0)
     {
-        cin >> x >> y;
-
-        
-            res=max(res,x+y);
-        
+        n/=5;
+        cntn[5]++;
+    }
+    while (n%3==0)
+    {
+        n/=3;
+        cntn[3]++;
+    }
+    while (n%2==0)
+    {
+        n/=2;
+        cntn[2]++;
     }
     
-    cout << res << endl;
+
+    while (k%5==0)
+    {
+        k/=5;
+        cntk[5]++;
+    }
+    while (k%3==0)
+    {
+        k/=3;
+        cntk[3]++;
+    }
+    while (k%2==0)
+    {
+        k/=2;
+        cntk[2]++;
+    }
+
+    ll cnt=0;
+    for (ll i = 2; i < 6; i++)
+    {
+        cnt+=abs(cntn[i]-cntk[i]);
+    }
+    
+    cout << (n==k?cnt:-1) << endl;
+
     return 0;
 }

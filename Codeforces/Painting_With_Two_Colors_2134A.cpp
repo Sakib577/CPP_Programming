@@ -69,21 +69,18 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll n;
-    cin >> n;
+    ll t;
+    cin >> t;
 
-    ll x,y;
-    ll MX=0;
-    ll res=0;
-    for (ll i = 0; i < n; i++)
+    while (t--)
     {
-        cin >> x >> y;
+        ll n,a,b;
+        cin >> n >> a >> b;
 
-        
-            res=max(res,x+y);
-        
+        if(!((n-b)&1) && (a<=b || !((n-a)&1))) cout << "YES" << endl;
+        else cout << "NO" << endl;
     }
     
-    cout << res << endl;
+
     return 0;
 }

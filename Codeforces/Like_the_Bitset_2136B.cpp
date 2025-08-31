@@ -69,21 +69,52 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll n;
-    cin >> n;
+    ll t;
+    cin >> t;
 
-    ll x,y;
-    ll MX=0;
-    ll res=0;
-    for (ll i = 0; i < n; i++)
+    while (t--)
     {
-        cin >> x >> y;
+        ll n,k;
+        cin >> n >> k;
+        string s;
+        cin >> s;
 
+        vector<ll> v(n);
+
+        ll cnt=0;
+        bool yes=true;
+        ll MX=n;
+        ll MN=1;
+
+        for (ll i = 0; i <n; i++)
+        {
+            if(s[i]=='0'){v[i]=MX;MX--;
+                cnt=0;
+            }
+            else{
+                cnt++;
+                v[i]=MN;MN++;
+            }
+            
+            if(cnt>=k){
+                yes=false;
+                break;
+            }
+        }
         
-            res=max(res,x+y);
-        
+        if(yes){
+            cout << "YES" << endl;
+            for (ll i = 0; i < n; i++)
+            {
+                cout << v[i] << " ";
+            }
+            newl;
+            
+        } else {
+            cout << "NO" << endl;
+        }
     }
     
-    cout << res << endl;
+
     return 0;
 }
