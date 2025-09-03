@@ -69,14 +69,19 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
+    ll n,k;
+    cin >> n >> k;
 
-    while (t--)
+    ll x=1;
+
+    for (ll i = 0; i < k; i++)
     {
-        ll n;
-        cin >> n;
+        x*=10;
     }
+    
+    ll res=lcm(n,x);
+
+    cout << res << endl;
     
 
     return 0;

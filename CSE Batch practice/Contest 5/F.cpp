@@ -74,8 +74,27 @@ int main()
 
     while (t--)
     {
-        ll n;
-        cin >> n;
+        ll n,k;
+        cin >> n >> k;
+        
+        ll cnt=0;
+
+        while (n!=0 && k!=0)
+        {
+            if(n>k){
+                cnt+=n/k;
+                n%=k;
+            } else if(k>n){
+                cnt+=k/n;
+                k%=n;
+            } else {
+                cnt++;
+                n=0;
+                k=0;
+            }
+        }
+        
+        cout << cnt << endl;
     }
     
 

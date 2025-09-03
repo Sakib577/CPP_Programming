@@ -69,15 +69,52 @@ ll combination(ll n, ll r){
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
-
-    while (t--)
-    {
-        ll n;
-        cin >> n;
-    }
+    string n,k;
     
+    cin >> n>>k;
+
+    ll sizen=n.size();
+    ll sizek=k.size();
+    ll MX=max(sizen,sizek);
+    ll MN=min(sizen,sizek);
+    
+
+    ll diff=MX-MN;
+    string t="";
+    if(sizen<sizek){ 
+        for (ll i = 0; i < diff; i++)
+        {
+            t+='0';
+        }
+        t+=n;
+        n=t;
+    } else if(sizek<sizen) {
+        for (ll i = 0; i < diff; i++)
+        {
+            t+='0';
+        }
+        t+=k;
+        k=t;
+    }
+    string ans="";
+    reverse(all(n));
+    reverse(all(k));
+    ll carry=0;
+    ll temp=0;
+    for (ll i = 0; i < MX; i++)
+    {
+        temp=n[i]-'0'+k[i]-'0'+carry;
+        if(temp>=10){
+            ans+=(char)((temp%10)+'0');
+            carry=temp/10;
+        } else {
+            ans+=(char)((temp)+'0');
+            carry=0;
+        }
+    }
+    if(carry)ans+=char(carry+'0');
+    reverse(all(ans));
+    cout << ans << endl;
 
     return 0;
 }

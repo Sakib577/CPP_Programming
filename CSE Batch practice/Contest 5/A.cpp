@@ -76,6 +76,38 @@ int main()
     {
         ll n;
         cin >> n;
+
+        vector <ll> v(n);
+        for(ll &i: v)cin >> i;
+
+        ll cnt=0;
+        ll sum=0;
+        
+
+        for (ll i = 0; i < n; i++)
+        {
+            if(i==0) sum+=v[i];
+            if(i==n-1) sum+=v[i];
+            if(i<n-1){
+                sum+=abs(v[i]-v[i+1]);
+            }
+        }
+
+        for(ll i=0; i< n; i++){
+            
+            if((i!=0 && i!=n-1) && v[i] > v[i-1] && v[i]> v[i+1]){
+                cnt+=v[i]-max(v[i-1],v[i+1]);
+                sum-=(v[i]-max(v[i-1],v[i+1]));
+            } else if(i==n-1 && i-1>=0 && v[i] > v[i-1]){
+                cnt+=v[i]-v[i-1];
+                sum-=(v[i]-v[i-1]);
+            } else if(i==0 && i+1<n && v[i]>v[i+1]){
+                cnt+=v[i]-v[i+1];
+                sum-=(v[i]-v[i+1]);
+            } else if(i==0 && i==n-1)sum-=v[i];
+        }
+
+        cout << sum << endl;
     }
     
 

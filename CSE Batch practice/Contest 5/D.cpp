@@ -76,6 +76,40 @@ int main()
     {
         ll n;
         cin >> n;
+        ll y=n;
+        string s="";
+        if(n==1)cout << 1 << endl;
+        else {
+            // for (ll i = 2; i <= 9; i++)
+            // {
+            //     while (n%i==0)
+            //     {
+            //         n/=i;
+            //         s+=(char)(i+'0');
+            //     }
+            // }
+
+            for (ll i = 9; i >= 2; i--)
+            {
+                while (n%i==0)
+                {
+                    n/=i;
+                    s+=(char)(i+'0');
+                }
+            }
+
+            ll x=1;
+            for (ll i = 0; i < s.size(); i++)
+            {
+                x*=s[i]-'0';
+            }
+            if(x==y){
+                sort(all(s));
+                cout << s << endl;
+            }
+            else cout << -1 << endl;
+        }
+
     }
     
 
