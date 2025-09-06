@@ -13,6 +13,19 @@ const ll M = 1e9+7;
 
 using namespace std;
 
+void printBin(ll n){
+    cout << bitset<64>(n).to_string().substr(64-10) << endl;
+}
+
+bool checkPow2(ll n){
+    if(n&(n-1)) return false;
+    else return true;
+}
+
+ll powof2(ll n){
+    return 1LL<<n;
+}
+
 int main()
 {
     fast_io;

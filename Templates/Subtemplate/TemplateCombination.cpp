@@ -13,6 +13,17 @@ const ll M = 1e9+7;
 
 using namespace std;
 
+ll combination(ll n, ll r){
+    if(r>n || r < 0) return 0;
+    if(r>n-r) r=n-r;
+    ll res=1;
+    for (ll i = 1; i <= r; i++)
+    {
+        res=res*(n-r+i)/i;
+    }
+    return res;
+}
+
 int main()
 {
     fast_io;

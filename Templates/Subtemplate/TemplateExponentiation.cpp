@@ -13,6 +13,29 @@ const ll M = 1e9+7;
 
 using namespace std;
 
+ll binPow(ll a, ll b){
+    ll res=1;
+    while (b)
+    {
+        if(b&1) res*=a;
+        a*=a;
+        b>>=1LL;
+    }
+    return res;
+}
+
+ll modExp(ll a, ll b, ll mod){
+    a=a%mod;
+    ll res=1;
+    while (b)
+    {
+        if(b&1) res=(a*res)%mod;
+        a=(a*a)%mod;
+        b>>=1LL;
+    }
+    return res;
+}
+
 int main()
 {
     fast_io;
