@@ -66,30 +66,38 @@ ll combination(ll n, ll r){
     return res;
 }
 
-// Sieve algorithm
-
-// const ll N=1e7+10;
-// vector<bool> sprime(N,true);
-// now inside main-->
-//     sprime[0]=sprime[1]=false;
-//     for (ll i = 2; i <N; i++)
-//     {
-//         if(sprime[i]){
-            // for (ll j = /* i*i or, 2*i */; j < N; j+=i) sprime[j]=false;
-//         }
-//     }
+const ll N=1e7+10;
+vector<bool> sprime(N,true);
+vector<ll> lp(N,0),hp(N,0);
 
 int main()
 {
     fast_io;
-    ll t;
-    cin >> t;
 
-    while (t--)
+    sprime[0]=sprime[1]=false;
+    for (ll i = 2; i <N; i++)
     {
-        ll n;
-        cin >> n;
+        if(sprime[i]){
+            lp[i]=hp[i]=i;
+            for (ll j = 2*i; j < N; j+=i) {
+                sprime[j]=false;
+                hp[j]=i;
+                if(lp[j]==0)lp[j]=i;
+            }
+        }
     }
+    
+    for (ll i = 0; i < 100; i++)
+    {
+        if(sprime[i]) cout << i << " ";
+    }
+    newl;
+
+    for (ll i = 0; i < 20; i++)
+    {
+        cout << i << " "<< lp[i] << " " << hp[i] << endl;
+    }
+    
     
 
     return 0;
