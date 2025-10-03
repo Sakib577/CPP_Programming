@@ -8,6 +8,15 @@
         "algorithm": "cpp",
         "valarray": "cpp",
         "bitset": "cpp",
-        "the_cunning_seller_easy_version_": "cpp"
+        "the_cunning_seller_easy_version_": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "flat_map": "cpp",
+        "flat_set": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp"
     }
 }
