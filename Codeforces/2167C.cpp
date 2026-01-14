@@ -23,6 +23,26 @@ int main()
     {
         ll n;
         cin >> n;
+
+        vector <ll> v(n);
+        
+        bool odd=false;
+        bool even=false;
+        for(ll &i: v) {
+            cin >> i;
+            if(i&1)odd=true;
+            else even=true;
+        }
+
+        if(odd && even){
+            sort(all(v));
+        }
+
+        for (ll i = 0; i < n; i++)
+        {
+            cout << v[i] << " ";
+        }newl;
+        
     }
     
 
